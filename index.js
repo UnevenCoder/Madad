@@ -4,6 +4,7 @@ const jokes=require('./joke.js')
 const quotes = require('./quotes.js')
 const tem = require('./tem.js')
 const help=require('./help.js')
+const newUsers = [];
 const client = new Discord.Client({
   fetchAllMembers: true, // Remove this if the bot is in large guilds.
   presence: {
@@ -66,7 +67,43 @@ if(b){
 
 
 
+client.on("guildMemberAdd", (member) => {
+  const guild = member.guild;
+  if (!newUsers[guild.id]) newUsers[guild.id] = new Discord.Collection();
+  newUsers[guild.id].set(member.id, member.user);
+
+  if (newUsers[guild.id].size > 10) {
+    const userlist = newUsers[guild.id].map(u => u.toString()).join(" ");
+    guild.channels.find(channel => channel.name === "general").send("Welcome our new users!\n" + userlist);
+    newUsers[guild.id].clear();
+  }
+});
+
+
+
+
+
+
+
+
+
 client.on('message', async message => {
+  console.log(message.author)
+  if(message.channel.type == "dm") {
+      //what should happen on a dm
+      
+      if(message.content=='hey'){
+        console.log('working')
+      message.reply('hi')
+      
+      }
+      else{
+        if(message.author.bot==false){message.reply({embed:embed.embedded('','https://discord.gg/WVKNWTg','Please talk to me in my home or any other discord server','','','Invitation to my home')})}
+        else{
+        
+      }}
+   } 
+else{   
  if (!message.guild) return;
  // prefix 
 if(message.content.startsWith(p)==true){
@@ -232,7 +269,7 @@ else{
       message.reply("You didn't mention the user to ban!");
     }
   }}
-}} );
+}}} );
 
 
 
