@@ -71,7 +71,7 @@ if(message.content.startsWith(p)==true){
   
   if(message.content==p+'avatar'){message.reply(message.author.displayAvatarURL());}
   if(message.content.startsWith(p+'wiki')==true){
-    if (message.content.split(' ').length<2){message.reply('Wiki search only accepts one paran try again')}
+    if (message.content.split(' ').length<2){message.reply('Wiki search only accepts one param try again')}
 else{ 
   let rmsg=[]
   for(let i = 0;i<message.content.split(' ').length;i++){
@@ -97,7 +97,7 @@ if(message.content===p+"say"){
     }
   if(message.content==p+'tem'){
    tem.tem(message.channel)
-  
+  }
   if(message.content.startsWith(p+'warn')==true){
         if (message.member.hasPermission("KICK_MEMBERS")){
      const mod = message.author;
@@ -140,7 +140,7 @@ if(message.content===p+"say"){
   }
   
   }
-  if(message.content==p+'help'){
+  if(message.content===p+'help'){
    help.help(message.channel)
   }
   if(message.content.startsWith(p+'prefix')==true){
@@ -159,7 +159,7 @@ if(message.content===p+"say"){
     }
     
     
-  if (message.content == p+"clear") {
+  if (message.content === p+"clear") {
         if (message.member.hasPermission("MANAGE_MESSAGES")) {
             message.channel.messages.fetch()
                .then(function(list){
@@ -229,7 +229,7 @@ else{
       message.reply("You didn't mention the user to ban!");
     }
   }}
-}}});
+}} );
 
 
 

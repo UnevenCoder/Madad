@@ -13,7 +13,7 @@ fetch('https://gist.githubusercontent.com/camperbot/5a022b72e96c4c9585c32bf6a75f
       let random= data['quotes'][num]['quote'];
       let author=data['quotes'][num]['author']
 //console.log(random,author)
-wts.send({embed:embed.embedded(colors[rand],random,author,'','','Random Quote by Madad :)')})
+wts.send({embed:embed.embedded(colors[rand],'',author,random,'','Random Quote by Madad :)')})
     })
   
 }
