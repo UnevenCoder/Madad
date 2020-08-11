@@ -25,7 +25,7 @@ let p = ';'
 
 
 async function wiki(ab,search){
-  let a,b
+  let a,b=''
 let keys=[],titles=[],img=[],desc=[]
     const rawData = await fetch('https://en.wikipedia.org/w/api.php?format=json&action=query&generator=search&gsrnamespace=0&gsrlimit=10&prop=pageimages|extracts&pilimit=max&exintro&explaintext&exsentences=1&exlimit=max&gsrsearch='+search.toString())
  const parsedData = await rawData.json()
@@ -43,7 +43,7 @@ if(b){
   ab.send({embed:embed.embedded(0x0099ff,titles[0],'Wikipedia Search Results',desc[0],img[0],'Wiki Search By Madad :)')})
 }
 }catch(error){
-  if (b==){
+  if (b==''){
     ab.send({embed:embed.embedded(0x0099ff,titles[0],'Wikipedia Search Results',desc[0],'','Wiki Search By Madad :)')})
   }
   console.log(error)
