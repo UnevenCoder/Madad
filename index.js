@@ -43,7 +43,7 @@ if(b){
   ab.send({embed:embed.embedded(0x0099ff,titles[0],'Wikipedia Search Results',desc[0],img[0],'Wiki Search By Madad :)')})
 }
 }catch(error){
-  if (!parsedData.query.pages[keys[0]].thumbnail){
+  if (b==){
     ab.send({embed:embed.embedded(0x0099ff,titles[0],'Wikipedia Search Results',desc[0],'','Wiki Search By Madad :)')})
   }
   console.log(error)
