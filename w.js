@@ -22,5 +22,6 @@ const exampleEmbed = new Discord.MessageEmbed()
   //console.log(exampleEmbed)
   ab.send({embed:exampleEmbed})
   })
+  .catch(err=>ab.send('Place doesn\'t exist'))
 }
 
