@@ -2,7 +2,6 @@ const Discord = require('discord.js');
 const meme=require('./meme.js')
 const jokes=require('./joke.js')
 const quotes = require('./quotes.js')
-const tem = require('./tem.js')
 const help=require('./help.js')
 const cat = require('./cat.js')
 const w=require('./w.js')
@@ -67,7 +66,24 @@ if(b){
   console.log(`Logged in as ${client.user.tag}!`);
 });
 
-
+client.on('guildCreate',guild=>{
+//  console.log(server)
+let link=''
+  guild.owner.send('Thanks for having me ! You can use ;help to discover commands  in the server.')
+  var found = false;
+  guild.channels.forEach(function(channel, id) {
+      // If a channel is already found, nothing more needs to be done
+      if(found == true || channel.type != "text") {
+        return;
+      }
+      // If the channel isn't found and the bot has permission to 
+      // send and read messages in the channel, send a welcome message there
+      if(guild.me.permissionsIn(channel).has("SEND_MESSAGES") && guild.me.permissionsIn(channel).has("VIEW_CHANNEL")) {
+        found = true;
+        return channel.send("Glad to meet you all , use ; to interact with me ;help for all my commands ")
+      }
+  })
+});
 
 client.on('guildMemberAdd', member => {
    member.send({embed:embed.embedded('##f3ca20','Welcome to the server','Greeting from Madad','Hope you have a great time with us .. we look forward to chatting with you and sharing our knowledge and gaining yours ','','Have a great day ahead :)')});
@@ -121,17 +137,7 @@ else{
   if(message.content==p+'meme'){
     meme.meme(message.channel)
   }
-if(message.content===p+"say"){
-        const voiceChannel = message.member.voice.channel;
-        voiceChannel.join().then(connection => {
-            const stream = discordTTS.getVoiceStream("this is a test cookie");
-            const dispatcher = connection.play(stream);
-            dispatcher.on("finish",()=>voiceChannel.leave())
-        });
-    }
-  if(message.content==p+'tem'){
-   tem.tem(message.channel)
-  }
+
   if(message.content.startsWith(p+'w')){
     if(message.content.split(' ').length==2){
       w.weather(message.content.split(' ')[1],message.channel)
