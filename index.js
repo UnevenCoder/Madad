@@ -36,8 +36,8 @@ let keys=[],titles=[],img=[],desc=[]
     titles.push(parsedData.query.pages[key.toString()].title)
   desc.push(parsedData.query.pages[key.toString()].extract)
 }
- b = parsedData.query.pages[keys[0]].thumbnail.source
- console.log(b)
+if(parsedData.query.pages[keys[0]].thumbnail)b=parsedData.query.pages[keys[0]].thumbnail.source
+ //console.log(b)
  img.push(b)
 if(b){
   ab.send({embed:embed.embedded(0x0099ff,titles[0],'Wikipedia Search Results',desc[0],img[0],'Wiki Search By Madad :)')})
@@ -71,9 +71,14 @@ if(message.content.startsWith(p)==true){
   
   if(message.content==p+'avatar'){message.reply(message.author.displayAvatarURL());}
   if(message.content.startsWith(p+'wiki')==true){
-    if (message.content.split(' ').length>2||message.content.split(' ').length<2){message.reply('Wiki search only accepts one paran try again')}
+    if (message.content.split(' ').length<2){message.reply('Wiki search only accepts one paran try again')}
 else{ 
-     let msg = wiki(message.channel,message.content.split(' ')[1])
+  let rmsg=[]
+  for(let i = 0;i<message.content.split(' ').length;i++){
+    if(i!=0)rmsg.push(message.content.split(' ')[i])
+  }
+  //console.log(rmsg.join(' '))
+     wiki(message.channel,rmsg.join(' '))
   
   }}
   if(message.content==p+'quote'){
@@ -227,6 +232,5 @@ else{
 }}});
 
 
-  
 
 client.login(process.env.token)
