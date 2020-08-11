@@ -7,7 +7,7 @@ exports.weather=function (place,ab){
   fetch('https://api.openweathermap.org/data/2.5/weather?q='+place+'+&appid='+key)
   .then(response=>response.json())
   .then(data=>{console.log(data)
-  if(data.cod)ab.send('Place doesn\'t exist')
+  if(data.cod)ab.send('Place doesn\'t exist or you didn\'t mention a city name or you passed multiple words .. bot takes account only of the first word after prefix ')
   else{
   // inside a command, event listener, etc.
 const exampleEmbed = new Discord.MessageEmbed()
@@ -23,7 +23,7 @@ const exampleEmbed = new Discord.MessageEmbed()
   
   //console.log(exampleEmbed)
   ab.send({embed:exampleEmbed})
-  })
+  }})
   }
 }
 
