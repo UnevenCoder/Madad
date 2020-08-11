@@ -9,7 +9,6 @@ exports.help=(ab) =>{
 	.setAuthor(';help sends this message ')
 	.addFields(
 	  { name: 'in built welcome', value: 'sends welcome dm to new people who join the server', inline: true },
-	  { name: ';prefix + new prefix', value: 'Changes the prefix to a new prefix', inline: true },
 	  { name: ';w space +place', value: 'Returns the temperature of the place', inline: true },
 	  { name: ';cat', value: 'Returna a cute cat pic ', inline: true },
 	  { name: ';joke', value: 'Returns a new joke', inline: true },
@@ -18,7 +17,7 @@ exports.help=(ab) =>{
 		{ name: ';quote', value: 'Returns a random quote', inline: true },
 		{ name: ';avatar', value: 'Returns your avatar', inline: true }
 		,
-		{ name: ';tem', value: 'Experimental don\'t try', inline: true },
+		
 				{ name: ';delete + value ', value: 'Deletes a specific number of tweets ', inline: true },
 
 		{ name: ';clear', value: 'Clears msgas of the last 14 days ', inline: true },
