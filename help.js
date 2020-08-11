@@ -20,7 +20,7 @@ exports.help=(ab) =>{
 		
 				{ name: ';delete + value ', value: 'Deletes a specific number of tweets ', inline: true },
 
-		{ name: ';clear', value: 'Clears msgas of the last 14 days ', inline: true },
+		{ name: ';clear', value: 'Clears msgs of the last 14 days ', inline: true },
 		{ name: ';kick + member', value: 'Kicks the member', inline: true },
 		{ name: ';ban + member', value: 'Bans the member', inline: true },
 	)
