@@ -67,16 +67,8 @@ if(b){
 
 
 
-client.on("guildMemberAdd", (member) => {
-  const guild = member.guild;
-  if (!newUsers[guild.id]) newUsers[guild.id] = new Discord.Collection();
-  newUsers[guild.id].set(member.id, member.user);
-
-  if (newUsers[guild.id].size > 10) {
-    const userlist = newUsers[guild.id].map(u => u.toString()).join(" ");
-    guild.channels.find(channel => channel.name === "general").send("Welcome our new users!\n" + userlist);
-    newUsers[guild.id].clear();
-  }
+client.on('guildMemberAdd', member => {
+   member.send({embed:embed.embedded('##f3ca20','Welcome to the server','Greeting from Madad','Hope you have a great time with us .. we look forward to chatting with you and sharing our knowledge and gaining yours ','','Have a great day ahead :)')});
 });
 
 
@@ -88,7 +80,7 @@ client.on("guildMemberAdd", (member) => {
 
 
 client.on('message', async message => {
-  console.log(message.author)
+  //console.log(message.author)
   if(message.channel.type == "dm") {
       //what should happen on a dm
       
@@ -270,7 +262,6 @@ else{
     }
   }}
 }}} );
-
 
 
 client.login(process.env.token)
