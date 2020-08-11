@@ -4,6 +4,8 @@ const jokes=require('./joke.js')
 const quotes = require('./quotes.js')
 const tem = require('./tem.js')
 const help=require('./help.js')
+const cat = require('./cat.js')
+const w=require('./w.js')
 const newUsers = [];
 const client = new Discord.Client({
   fetchAllMembers: true, // Remove this if the bot is in large guilds.
@@ -130,6 +132,12 @@ if(message.content===p+"say"){
   if(message.content==p+'tem'){
    tem.tem(message.channel)
   }
+  if(message.content.startsWith(p+'w')){
+    if(message.content.split(' ').length==2){
+      w.weather(message.content.split(' ')[1],message.channel)
+    }
+  }
+  if(message.content==p+'cat')cat.cat(message.channel)
   if(message.content.startsWith(p+'warn')==true){
         if (message.member.hasPermission("KICK_MEMBERS")){
      const mod = message.author;
@@ -262,6 +270,5 @@ else{
     }
   }}
 }}} );
-
 
 client.login(process.env.token)
