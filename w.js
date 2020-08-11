@@ -25,5 +25,5 @@ const exampleEmbed = new Discord.MessageEmbed()
   ab.send({embed:exampleEmbed})
   }})
   }
-}
+
 
