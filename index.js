@@ -6,6 +6,7 @@ const help=require('./help.js')
 const cat = require('./cat.js')
 const w=require('./w.js')
 const newUsers = [];
+const covid = require('./covid')
 const client = new Discord.Client({
   fetchAllMembers: true, // Remove this if the bot is in large guilds.
   presence: {
@@ -117,11 +118,18 @@ else{
  if (!message.guild) return;
  // prefix 
 if(message.content.startsWith(p)==true){
+  if(message.content.startsWith(p+'covid')==true){
+    let arr = []
+    for(let i = 0 ; i<message.content.split(' ').length;i++){
+      if(i!=0)arr.push(message.content.split(' ')[i].toLowerCase())
+    }
+    covid.data(arr.join(' '),message.channel)
+  }
   
   if(message.content==p+'avatar'){message.reply(message.author.displayAvatarURL());}
   if(message.content==p+'joke'){jokes.joke(message.channel)}
   if(message.content.startsWith(p+'wiki')==true){
-    if (message.content.split(' ').length<2){message.reply('Wiki search only accepts one param try again')}
+    if (message.content.split('-').length<2){message.reply('Wiki search only accepts one param try again')}
 else{ 
   let rmsg=[]
   for(let i = 0;i<message.content.split(' ').length;i++){
@@ -276,5 +284,4 @@ else{
     }
   }}
 }}} );
-
 client.login(process.env.token)
