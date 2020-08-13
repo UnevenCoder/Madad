@@ -17,7 +17,6 @@ const client = new Discord.Client({
     } 
   }
 })
-
 const queue = new Map();
 const oppus = require('opusscript')
 const ffmeg = require('ffmpeg-static')
@@ -26,7 +25,6 @@ const embed=require('./embed.js')
 const discordTTS=require('./tts.js');
 const ytdl = require('ytdl-core');
 let p = ';'
-
 
 
 async function wiki(ab,search){
@@ -276,7 +274,7 @@ else{
 
             console.error(err);
           });
-      } else {
+      } else { 
         message.reply("That user isn't in this guild!");
       }
     } else {
