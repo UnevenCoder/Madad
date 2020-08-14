@@ -25,7 +25,7 @@ const fetch = require('node-fetch');
 const embed=require('./embed.js')
 const discordTTS=require('./tts.js');
 const ytdl = require('ytdl-core');
-let p = '='
+let p = '-'
 
 
 async function wiki(ab,search){
