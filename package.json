@@ -17,6 +17,7 @@
     "google-tts-api": "0.0.4",
     "node-fetch": "^2.6.0",
     "opusscript": "0.0.7",
+    "owlbot-js": "^2.0.0",
     "ytdl-core": "^3.2.0"
   }
 }

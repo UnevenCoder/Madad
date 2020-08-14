@@ -1,10 +1,13 @@
 const Discord = require('discord.js');
+const dict=require('./dict.js')
+const apod=require('./apod.js')
 const meme=require('./meme.js')
 const jokes=require('./joke.js')
 const quotes = require('./quotes.js')
 const help=require('./help.js')
 const cat = require('./cat.js')
 const w=require('./w.js')
+const apod2=require('./apod2.js')
 const cipher=require('./cipher.js')
 const newUsers = [];
 const covid = require('./covid')
@@ -18,13 +21,8 @@ const client = new Discord.Client({
     } 
   }
 })
-const queue = new Map();
-const oppus = require('opusscript')
-const ffmeg = require('ffmpeg-static')
 const fetch = require('node-fetch');
 const embed=require('./embed.js')
-const discordTTS=require('./tts.js');
-const ytdl = require('ytdl-core');
 let p = '-'
 
 
@@ -126,6 +124,17 @@ if(message.content.startsWith(p)==true){
   }
   
   if(message.content==p+'avatar'){message.reply(message.author.displayAvatarURL());}
+  if(message.content.startsWith(p+'nasapod')==true){
+    if(message.content.split(' ').length==1){
+    apod.apod(message.channel)
+  }
+  if(message.content.split(' ').length==2){
+apod2.apod2(message.channel,message.content.split(' ')[1])
+  }
+  }
+   if(message.content.startsWith(p+'dict')==true){
+     dict.dict(message.content.split(' ')[1],message.channel)
+   }
   if(message.content==p+'joke'){jokes.joke(message.channel)}
   if(message.content.startsWith(p+'wiki')==true){
     if (message.content.split('-').length<2){message.reply('Wiki search only accepts one param try again')}
