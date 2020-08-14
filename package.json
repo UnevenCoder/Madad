@@ -10,6 +10,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "crypto-js": "^4.0.0",
+    "discord": "^0.8.2",
     "discord.js": "^12.2.0",
     "ffmpeg-static": "^4.2.6",
     "google-tts-api": "0.0.4",

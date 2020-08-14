@@ -5,6 +5,7 @@ const quotes = require('./quotes.js')
 const help=require('./help.js')
 const cat = require('./cat.js')
 const w=require('./w.js')
+const cipher=require('./cipher.js')
 const newUsers = [];
 const covid = require('./covid')
 const client = new Discord.Client({
@@ -24,7 +25,7 @@ const fetch = require('node-fetch');
 const embed=require('./embed.js')
 const discordTTS=require('./tts.js');
 const ytdl = require('ytdl-core');
-let p = ';'
+let p = '='
 
 
 async function wiki(ab,search){
@@ -143,12 +144,21 @@ else{
   if(message.content==p+'meme'){
     meme.meme(message.channel)
   }
-
+ if(message.content.startsWith(p+'cipher')==true){
+   let send=[]
+   for(let i = 0;message.content.split(' ').length>i;i++){
+    if(i!=0)send.push(message.content.split(' ')[i])
+   }
+ //  console.log('I am working')
+   //message.channel.send('cmd is working')
+   cipher.cipher(message.channel,send.join(' '))
+  }
   if(message.content.startsWith(p+'w')){
     if(message.content.split(' ').length==2){
       w.weather(message.content.split(' ')[1],message.channel)
     }
   }
+  
   if(message.content==p+'cat')cat.cat(message.channel)
   if(message.content.startsWith(p+'warn')==true){
         if (message.member.hasPermission("KICK_MEMBERS")){
@@ -282,4 +292,5 @@ else{
     }
   }}
 }}} );
+
 client.login(process.env.token)
