@@ -1,4 +1,5 @@
 const Discord = require('discord.js');
+const github=require('./github.js')
 const dict=require('./dict.js')
 const apod=require('./apod.js')
 const meme=require('./meme.js')
@@ -122,7 +123,14 @@ if(message.content.startsWith(p)==true){
     }
     covid.data(arr.join(' '),message.channel)
   }
-  
+if(message.content.startsWith(p+'github')==true){
+  let msg=[]
+  for(let i = 0;i<message.content.split(' ').length;i++){
+    if(i!=0)msg.push(message.content.split(' ')[i])
+  }
+  if(message.content.split(' ').length==1)message.channel.send('Please try the command again -github username <format')
+  else{github.github(message.channel,msg.join(' '))}
+}
   if(message.content==p+'avatar'){message.reply(message.author.displayAvatarURL());}
   if(message.content.startsWith(p+'nasapod')==true){
     if(message.content.split(' ').length==1){
