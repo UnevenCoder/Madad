@@ -71,7 +71,7 @@ if(b){
 client.on('guildCreate',guild=>{
 //  console.log(server)
 let link=''
-  guild.owner.send('Thanks for having me ! You can use ;help to discover commands  in the server.')
+  guild.owner.send('Thanks for having me ! You can use -help to discover commands  in the server.')
   var found = false;
   guild.channels.forEach(function(channel, id) {
       // If a channel is already found, nothing more needs to be done
@@ -82,7 +82,7 @@ let link=''
       // send and read messages in the channel, send a welcome message there
       if(guild.me.permissionsIn(channel).has("SEND_MESSAGES") && guild.me.permissionsIn(channel).has("VIEW_CHANNEL")) {
         found = true;
-        return channel.send("Glad to meet you all , use ; to interact with me ;help for all my commands ")
+        return channel.send("Glad to meet you all , use - to interact with me -help for all my commands ")
       }
   })
 });
