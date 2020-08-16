@@ -186,7 +186,7 @@ else{
       for(let i= 0;i < message.content.split(' ').length;i++){
         if(i!=0)msg.push(message.content.split(' ')[i])
       }
-      breed.breed(message.channel,msg.join(''))
+      breed.breed(message.channel,msg.reverse().join('/').toLowerCase())
       
     }
       
