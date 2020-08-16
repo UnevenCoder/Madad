@@ -241,14 +241,14 @@ else{
    message.channel.send('prefix changed to '+p)
   }
   if (message.content.startsWith(p+'delete') == true) {
-        if (message.member.hasPermission("MANAGE_MESSAGES")) {
+        if (message.member.hasPermission("KICK_MEMBERS")) {
           let a = message.content.split(' ')
           let num = parseInt(a[1])
             message.channel.messages.fetch()
                .then(function(){
                     message.channel.bulkDelete(num);
-                }
-              .catch(function(err){message.channel.send("ERROR: ERROR CLEARING CHANNEL.")}))                     
+                })
+              .catch(function(err){message.channel.send("ERROR: ERROR CLEARING CHANNEL.")})               
         }
     }
     
