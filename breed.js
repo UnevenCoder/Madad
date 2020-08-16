@@ -16,7 +16,7 @@ exports.breed=(ab,breed)=>{
   ab.send({embed:embed.embedded(colors[rand],'','','',data.message,'Dog img')})
   }
   else{
-    ab.send('breed not found try -blist for all possible breeda')
+    ab.send('breed not found try breed + type .. like Shepherd Australian instead of Australian Shepherd .. hope it makes sense :)')
   }
   
 })}
