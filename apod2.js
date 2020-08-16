@@ -1,7 +1,7 @@
 const fetch = require('node-fetch')
 const Discord = require('discord.js');
 const embed = require('./embed.js')
-//let key = process.env.nasa
+let key = process.env.nasa
 exports.apod2=(ab,date)=>{
   fetch('https://api.nasa.gov/planetary/apod?api_key='+key+'&date='+date.toString())
 .then(res=>res.json())
