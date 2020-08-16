@@ -1,5 +1,6 @@
 const Discord = require('discord.js');
 const dog=require('./dog.js')
+const breed=require('./breed.js')
 const github=require('./github.js')
 const dict=require('./dict.js')
 const apod=require('./apod.js')
@@ -23,6 +24,7 @@ const client = new Discord.Client({
     } 
   }
 })
+
 const fetch = require('node-fetch');
 const embed=require('./embed.js')
 let p = '-'
@@ -177,6 +179,17 @@ else{
     }
   }
    if(message.content==p+'dog')dog.dog(message.channel)
+   
+   
+  if(message.content.startsWith(p+'breed')==true){
+      let msg=[]
+      for(let i= 0;i < message.content.split(' ').length;i++){
+        if(i!=0)msg.push(message.content.split(' ')[i])
+      }
+      breed.breed(message.channel,msg.join(''))
+      
+    }
+      
   if(message.content==p+'cat')cat.cat(message.channel)
   if(message.content.startsWith(p+'warn')==true){
         if (message.member.hasPermission("KICK_MEMBERS")){
@@ -234,7 +247,8 @@ else{
             message.channel.messages.fetch()
                .then(function(){
                     message.channel.bulkDelete(num);
-                }, function(err){message.channel.send("ERROR: ERROR CLEARING CHANNEL.")})                        
+                }
+              .catch(function(err){message.channel.send("ERROR: ERROR CLEARING CHANNEL.")}))                     
         }
     }
     
