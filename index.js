@@ -1,4 +1,5 @@
 const Discord = require('discord.js');
+const dog=require('./dog.js')
 const github=require('./github.js')
 const dict=require('./dict.js')
 const apod=require('./apod.js')
@@ -175,7 +176,7 @@ else{
       w.weather(message.content.split(' ')[1],message.channel)
     }
   }
-  
+   if(message.content==p+'dog')dog.dog(message.channel)
   if(message.content==p+'cat')cat.cat(message.channel)
   if(message.content.startsWith(p+'warn')==true){
         if (message.member.hasPermission("KICK_MEMBERS")){
