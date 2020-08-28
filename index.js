@@ -87,9 +87,9 @@ let link=''
   })
 });
 
-client.on('guildMemberAdd', member => {
+/*client.on('guildMemberAdd', member => {
    member.send({embed:embed.embedded('##f3ca20','Welcome to the server','Greeting from Madad','Hope you have a great time with us .. we look forward to chatting with you and sharing our knowledge and gaining yours ','','Have a great day ahead :)')});
-});
+});*/
 
 
 
