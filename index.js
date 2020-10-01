@@ -13,9 +13,14 @@ const w=require('./w.js')
 const apod2=require('./apod2.js')
 const cipher=require('./cipher.js')
 const newUsers = [];
-const covid = require('./covid')
+const covid = require('./covid.js')
+const express = require('express');
+const yon = require('./yon.js')
+const server = require('./server.js')
+server.keepAlive()
+
 const client = new Discord.Client({
-  fetchAllMembers: true, // Remove this if the bot is in large guilds.
+  fetchAllMembers: false,
   presence: {
     status: 'online',
     activity: {
@@ -119,6 +124,14 @@ else{
  if (!message.guild) return;
  // prefix 
 if(message.content.startsWith(p)==true){
+  if(message.content.startsWith(p+'yon')==true){
+    yon.yon(message.channel)
+  }
+  if(message.content.startsWith(p+'invite')===true){
+    message.channel.createInvite({ unique: true, temporary: false }).then(invite => {
+  message.channel.send('https://discord.gg/'+invite.code);
+});
+  }
   if(message.content.startsWith(p+'covid')==true){
     let arr = []
     for(let i = 0 ; i<message.content.split(' ').length;i++){
@@ -324,5 +337,4 @@ else{
     }
   }}
 }}} );
-
 client.login(process.env.token)

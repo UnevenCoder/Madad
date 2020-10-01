@@ -9,7 +9,7 @@ exports.help=(ab) =>{
 	.setAuthor('help sends this message ')
 	.addFields(
 	  { name: 'in built welcome', value: 'sends welcome dm to new people who join the server', inline: true },
-	   { name: '-breed + type ', value: 'returns a random cute pic of a dog of that breed ', inline: true },
+	   { name: '-breed + type ', value: 'returns a random cute pic of a dog of that breed ', inline: true },{ name: '-yon + statement', value: 'Returns a yes or a no with a  gif response ..', inline: true },
 	  { name: '-dog', value: 'Returns a random cute dog pic ', inline: true },
 	  { name: '-github + username', value:'Returns Github Data', inline: true },
 	  { name: '-covid + place ', value: 'returns covid stats of the place', inline: true },
