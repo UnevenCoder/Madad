@@ -259,7 +259,7 @@ else{
           let num = parseInt(a[1])
             message.channel.messages.fetch()
                .then(function(){
-                    message.channel.bulkDelete(num);
+                    message.channel.bulkDelete(num+1);
                 })
               .catch(function(err){message.channel.send("ERROR: ERROR CLEARING CHANNEL.")})               
         }
