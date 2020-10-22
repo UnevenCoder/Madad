@@ -177,6 +177,22 @@ else{
   if(message.content==p+'meme'){
     meme.meme(message.channel)
   }
+ if(message.content.startsWith(p+'webdev')==true){
+   if(message.channel.guild.id==='537635453608656897'){
+   let role = '752537094521487370'
+   const roles = message.guild.members.cache.get(message.author.id)._roles
+   if(!roles.some(x=>x===role)){
+     message.member.roles.add([role],'')
+     .then(x=>message.channel.send('added successfully'))
+     .catch(x=>console.log(x))
+   }
+   else{
+     message.member.roles.remove([role],'')
+     .then(x=>message.channel.send('removed successfully'))
+     .catch(x=>console.log(x))
+   }
+   }
+ }
  if(message.content.startsWith(p+'cipher')==true){
    let send=[]
    for(let i = 0;message.content.split(' ').length>i;i++){
