@@ -1,4 +1,4 @@
-let key = process.env.dict
+let key = 'f3e1b35e7ff9b8f8d7edb2a1a4fd5c98ba845a9b'
 const Owlbot=require('owlbot-js')
 const Discord=require('discord.js')
 const embed=require('./embed.js')

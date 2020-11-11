@@ -1,5 +1,4 @@
 const Discord = require('discord.js');
-const Database = require("@replit/database")
 const dog=require('./dog.js')
 const breed=require('./breed.js')
 const github=require('./github.js')
@@ -17,6 +16,9 @@ const newUsers = [];
 const covid = require('./covid.js')
 const express = require('express');
 const yon = require('./yon.js')
+const server = require('./server.js')
+server.keepAlive()
+
 const client = new Discord.Client({
   fetchAllMembers: false,
   presence: {
@@ -27,20 +29,11 @@ const client = new Discord.Client({
     } 
   }
 })
-const http = require('http');
-const server = http.createServer((req, res) => {
-  res.writeHead(200);
-  res.end('ok');
-});
-server.listen(3000);
+
 const fetch = require('node-fetch');
 const embed=require('./embed.js')
-
-// Setting Up Db
-const db = new Database()
-db.set('default','-').then(()=>{})
-
 let p = '-'
+
 
 async function wiki(ab,search){
   let a,b=''
@@ -130,15 +123,6 @@ client.on('message', async message => {
 else{   
  if (!message.guild) return;
  // prefix 
- await db.list().then(keys=>{keys.forEach(x=>
-    {if(x== message.channel.guild.id.toString()){
-      db.get(x).then(y=>p=y)}
-      else{
-        p='-'
-      }
-  
-    })})
-    await console.log(p)
 if(message.content.startsWith(p)==true){
   if(message.content.startsWith(p+'yon')==true){
     yon.yon(message.channel)
@@ -236,14 +220,6 @@ else{
     }
       
   if(message.content==p+'cat')cat.cat(message.channel)
-  
-  //Config
-  if(message.content.startsWith(p+'prefix')){
-    if(message.content.split(' ').length==2){
-   db.set(message.channel.guild.id.toString(),message.content.split(' ')[1]).then(()=>message.channel.send('Successfully Added')).catch(x=>console.log(x))
-    }
-  }
-  
   if(message.content.startsWith(p+'warn')==true){
         if (message.member.hasPermission("KICK_MEMBERS")){
      const mod = message.author;
@@ -377,4 +353,5 @@ else{
     }
   }}
 }}} );
+
 client.login(process.env.token)
