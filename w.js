@@ -1,5 +1,5 @@
 //let key='process.env.api'
-const key = 'f2145c7d433fd772c1b86b576a1ab1e0'
+const key = process.env.weather
 const fetch = require('node-fetch')
 const Discord = require('discord.js');
 const embed = require('./embed.js')
