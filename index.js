@@ -175,7 +175,7 @@ else{
     quotes.quote(message.channel)
   }
   if(message.content==p+'meme'){
-    meme.meme(message.channel)
+    meme.meme(message,message.channel)
   }
  if(message.content.startsWith(p+'webdev')==true){
    if(message.channel.guild.id==='537635453608656897'){
