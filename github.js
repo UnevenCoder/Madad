@@ -12,7 +12,7 @@ fetch('https://api.github.com/users/'+name)
 //	.setTitle()//+data.definitions[0].emoji)
 	.setAuthor(data.company?data.name+' , '+data.company:data.name)
 	.addFields(
-		{ name: 'Bio', value: data.bio, inline: true },
+		{ name: 'Bio', value: typeof data.bio === "null" ? "The userhas no bio" : data.bio, inline: true },
 		{ name: 'Followers', value: data.followers, inline: true },
 			{ name: 'Following', value: data.following, inline: true }
 	)
