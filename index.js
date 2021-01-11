@@ -206,6 +206,7 @@ else{
     if(message.content.split(' ').length==2){
       w.weather(message.content.split(' ')[1],message.channel)
     }
+    else message.channel.send('The arguments length to `-w` command should be 1')
   }
    if(message.content==p+'dog')dog.dog(message.channel)
    
