@@ -6,7 +6,7 @@ exports.github=(ab,name)=>{
 fetch('https://api.github.com/users/'+name)
 .then(res=>res.json())
 .then(data=>{
-  if(data.bio){
+  if(data.status === 200){
   let msg = new Discord.MessageEmbed()
 	.setColor('#0099ff')
 //	.setTitle()//+data.definitions[0].emoji)
