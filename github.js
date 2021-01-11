@@ -14,6 +14,7 @@ fetch('https://api.github.com/users/'+name)
 	.addFields(
 		{ name: 'Bio', value: data.bio? data.bio :'User has no bio', inline: true },
 		{ name: 'Followers', value: data.followers, inline: true },
+			{ name:'Account Type', 'User', inline:true},
 			{ name: 'Following', value: data.following, inline: true }
 	)
 	.setImage(data.avatar_url)
@@ -35,7 +36,8 @@ fetch('https://api.github.com/users/'+name)
 		{ name: 'Location', value: data.location, inline: true },
 			{ name: 'Twitter', value: data.twitter_username, inline: true },
 			{ name:'Email', value:data.email,inline:true},
-			{name:'Verified' ,value:data.is_verified?'Yes':'No',inline:true}
+			{ name:'Account Type', 'Organization', inline:true},
+			{ name:'Verified' ,value:data.is_verified?'Yes':'No',inline:true}
 	)
 	.setImage(data.avatar_url)
 	.setTimestamp()
