@@ -1,5 +1,4 @@
 
-// = (color,title,autho,description,image,operation)
 const fetch = require('node-fetch')
 const Discord = require('discord.js');
 const embed = require('./embed.js')

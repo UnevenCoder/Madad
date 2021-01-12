@@ -1,4 +1,4 @@
-let key='process.env.api'
+let key=process.env.api
 const fetch = require('node-fetch')
 const Discord = require('discord.js');
 const embed = require('./embed.js')

@@ -17,8 +17,10 @@ const covid = require('./covid.js')
 const express = require('express');
 const yon = require('./yon.js')
 const server = require('./server.js')
+const GImgs = require('./SearchImg.js')
 server.keepAlive()
 
+let blacklist_words=['girls','women','gays','lgbt','lesbian','nude','sexy','boob','tits' ,'tity', 'ass', 'booty' ,'sex' ,'naked', 'boobies','nude women']
 const client = new Discord.Client({
   fetchAllMembers: false,
   presence: {
@@ -173,6 +175,17 @@ else{
   }}
   if(message.content==p+'quote'){
     quotes.quote(message.channel)
+  }
+    if(message.content.startsWith(p+'pic')){
+     if(!blacklist_words.includes(message.content.split(' ')[1])){
+    GImgs.imgSearch(message.content.split(' ')[1],message.channel)
+    if(message.content.split(' ').length>2){
+      message.channel.send('Only first argument is taken care off')
+    }
+     }
+    else{
+      message.channel.send("please don't search for bad stuff")
+    }
   }
   if(message.content==p+'meme'){
     meme.meme(message,message.channel)
