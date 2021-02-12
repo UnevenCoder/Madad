@@ -14,8 +14,5 @@ if(data.memes[0]['nsfw']===false){
 else{
   meme()
 }
-
 })
-
-
 }

@@ -17,9 +17,11 @@ exports.help=(ab) =>{
      { name: '-pic + search ', value: 'returns an img related to the search term', inline: true },
 	   { name:'-nasapod + [optional +date in format YYYY-MM-DD]', value: 'Returns Nasa\'s pic of the day with it\'s significance', inline: true },
 	   	{ name: '-dict + words', value: 'Returns definitons for the word', inline: true },
-	  { name: '-w space +place', value: 'Returns the temperature of the place', inline: true },
+	  { name: '-weather space +place', value: 'Returns the temperature of the place', inline: true },
 	  { name: '-cat', value: 'Returna a cute cat pic ', inline: true },
 	  { name: '-joke', value: 'Returns a new joke', inline: true },
+	  		{ name: '-djoke', value: 'Returns a dad joke ', inline: true }
+		,
 		{ name: '-meme', value: 'Returns a random meme', inline: true },
 		{ name: '-wiki + search', value: 'Returns search result on wikipedia', inline: true },
 		{ name: '-quote', value: 'Returns a random quote', inline: true },

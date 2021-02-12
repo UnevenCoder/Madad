@@ -6,6 +6,7 @@ const dict=require('./dict.js')
 const apod=require('./apod.js')
 const meme=require('./meme.js')
 const jokes=require('./joke.js')
+const dadjoke=require('./dadjoke.js')
 const quotes = require('./quotes.js')
 const help=require('./help.js')
 const cat = require('./cat.js')
@@ -161,7 +162,11 @@ apod2.apod2(message.channel,message.content.split(' ')[1])
    if(message.content.startsWith(p+'dict')==true){
      dict.dict(message.content.split(' ')[1],message.channel)
    }
-  if(message.content==p+'joke'){jokes.joke(message.channel)}
+      if(message.content.startsWith(p+'log')==true){
+    console.log(message.channel.guild.name,message.channel.guild.id,message.channel.guild.region,message.channel.guild.ownerID)
+   }
+  if(message.content==p+'joke'){jokes.joke(message.channel.guild.id,message.channel)}
+  if(message.content==p+'djoke'){dadjoke.joke(message.channel)}
   if(message.content.startsWith(p+'wiki')==true){
     if (message.content.split('-').length<2){message.reply('Wiki search only accepts one param try again')}
 else{ 
@@ -215,7 +220,7 @@ else{
    //message.channel.send('cmd is working')
    cipher.cipher(message.channel,send.join(' '))
   }
-  if(message.content.startsWith(p+'w')){
+  if(message.content.startsWith(p+'weather')){
     if(message.content.split(' ').length==2){
       w.weather(message.content.split(' ')[1],message.channel)
     }
