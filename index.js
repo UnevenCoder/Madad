@@ -283,11 +283,11 @@ else{
   }
   if(message.content===p+'help'){
    help.help(message.channel)
-  }
+  }/*
   if(message.content.startsWith(p+'prefix')==true){
    p=message.content.split(' ')[1]
    message.channel.send('prefix changed to '+p)
-  }
+  }*/
   if (message.content.startsWith(p+'delete') == true) {
         if (message.member.hasPermission("KICK_MEMBERS")) {
           let a = message.content.split(' ')
@@ -297,6 +297,9 @@ else{
                     message.channel.bulkDelete(num+1);
                 })
               .catch(function(err){message.channel.send("ERROR: ERROR CLEARING CHANNEL.")})               
+        }
+        else{
+          message.channel.send("You don't have perms stop wasting mine and your time [NO OFFENSE]")
         }
     }
     

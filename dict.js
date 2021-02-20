@@ -1,15 +1,15 @@
-let key = 'f3e1b35e7ff9b8f8d7edb2a1a4fd5c98ba845a9b'
+
 const Owlbot=require('owlbot-js')
 const Discord=require('discord.js')
 const embed=require('./embed.js')
-var client = Owlbot(key);
+var client = Owlbot(process.env.dict);
 //(color,title,autho,description,image,operation)
 exports.dict=(word,ab)=>{
   
 client.define(word).then(function(data){
  
  // if(!data.response.status){
-   
+   console.log(data)
    let msg = new Discord.MessageEmbed()
 	.setColor('#0099ff')
 	.setTitle(word)//+data.definitions[0].emoji)
@@ -27,6 +27,7 @@ client.define(word).then(function(data){
 
 })
 client.define(word).catch(function(data){
+  console.log(data)
   ab.send('Word not found try again sorry :)')
 })
 }
