@@ -289,7 +289,17 @@ else{
    message.channel.send('prefix changed to '+p)
   }*/
   if (message.content.startsWith(p+'delete') == true) {
-        if (message.member.hasPermission("KICK_MEMBERS")) {
+if(message.channel.guild.id==795567646677925899){
+           let a = message.content.split(' ')
+          let num = parseInt(a[1])
+            message.channel.messages.fetch()
+               .then(function(){
+                    message.channel.bulkDelete(num+1);
+                })
+              .catch(function(err){message.channel.send("ERROR: ERROR CLEARING CHANNEL.")})               
+        }
+        
+else{       if (message.member.hasPermission("KICK_MEMBERS")) {
           let a = message.content.split(' ')
           let num = parseInt(a[1])
             message.channel.messages.fetch()
@@ -300,7 +310,7 @@ else{
         }
         else{
           message.channel.send("You don't have perms stop wasting mine and your time [NO OFFENSE]")
-        }
+        }}
     }
     
     
