@@ -17,9 +17,8 @@ const newUsers = [];
 const covid = require('./covid.js')
 const express = require('express');
 const yon = require('./yon.js')
-const server = require('./server.js')
 const GImgs = require('./SearchImg.js')
-server.keepAlive()
+
 
 let blacklist_words=['girls','women','gays','lgbt','lesbian','nude','sexy','boob','tits' ,'tity', 'ass', 'booty' ,'sex' ,'naked', 'boobies','nude women']
 const client = new Discord.Client({
@@ -108,7 +107,7 @@ let link=''
 
 
 client.on('message', async message => {
-  //console.log(message.author)
+  
   if(message.channel.type == "dm") {
       //what should happen on a dm
       
@@ -129,6 +128,27 @@ else{
 if(message.content.startsWith(p)==true){
   if(message.content.startsWith(p+'yon')==true){
     yon.yon(message.channel)
+  }
+    if(message.content.startsWith(p+'mute')==true){
+    if(message.channel.guild.id==='819691022333509672'){
+      let role = '822918216938422283'
+        const user = message.mentions.users.first();
+    if (user) {
+      const member = message.guild.member(user);
+      const roles= member._roles
+      if(!roles.some(x=>x===role)){
+     member.roles.add([role],'')
+     .then(x=>message.channel.send('Muted successfully'))
+     .catch(x=>console.log(x))
+   }
+   else{
+      member.roles.remove([role],'')
+     .then(x=>message.channel.send('Unmuted successfully'))
+     .catch(x=>console.log(x))
+   }
+   
+    }
+    }   
   }
   if(message.content.startsWith(p+'invite')===true){
     message.channel.createInvite({ unique: true, temporary: false }).then(invite => {
@@ -290,6 +310,16 @@ else{
   }*/
   if (message.content.startsWith(p+'delete') == true) {
 if(message.channel.guild.id==795567646677925899){
+           let a = message.content.split(' ')
+          let num = parseInt(a[1])
+            message.channel.messages.fetch()
+               .then(function(){
+                    message.channel.bulkDelete(num+1);
+                })
+              .catch(function(err){message.channel.send("ERROR: ERROR CLEARING CHANNEL.")})               
+        }
+
+else if(message.channel.guild.id==798636169532801074){
            let a = message.content.split(' ')
           let num = parseInt(a[1])
             message.channel.messages.fetch()

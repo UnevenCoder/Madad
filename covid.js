@@ -8,6 +8,7 @@ exports.data =(country,ab) =>{
  fetch('https://api.covid19api.com/country/'+country+'?from=2020-03-01T00:00:00Z&to=2020-08-01T00:00:00Z')
      .then(response => response.json())
      .then(data=> {
+     
        if(!data.message){
          let re = 0 , con = 0 ,death=0,active=0
          for(let i = 0;i<data.length;i++){
