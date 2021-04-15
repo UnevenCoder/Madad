@@ -32,7 +32,7 @@ const client = new Discord.Client({
   }
 })
 
-const fetch = require('node-fetch');
+
 const embed=require('./embed.js')
 let p = '-'
 
@@ -125,31 +125,25 @@ client.on('message', async message => {
 else{   
  if (!message.guild) return;
  // prefix 
+/*
+const thisWord = "hau";
+if(message.content.toLowerCase().includes(thisWord)&&message.author.bot==false)
+{
+message.channel.send('Bilkul Hau')
+return
+}
+const tWord = "yesh";
+if(message.content.toLowerCase().includes(tWord)&&message.author.bot==false)
+{
+message.channel.send('Yesh I agree')
+return
+}
+*/
 if(message.content.startsWith(p)==true){
   if(message.content.startsWith(p+'yon')==true){
     yon.yon(message.channel)
   }
-    if(message.content.startsWith(p+'mute')==true){
-    if(message.channel.guild.id==='819691022333509672'){
-      let role = '822918216938422283'
-        const user = message.mentions.users.first();
-    if (user) {
-      const member = message.guild.member(user);
-      const roles= member._roles
-      if(!roles.some(x=>x===role)){
-     member.roles.add([role],'')
-     .then(x=>message.channel.send('Muted successfully'))
-     .catch(x=>console.log(x))
-   }
-   else{
-      member.roles.remove([role],'')
-     .then(x=>message.channel.send('Unmuted successfully'))
-     .catch(x=>console.log(x))
-   }
-   
-    }
-    }   
-  }
+  
   if(message.content.startsWith(p+'invite')===true){
     message.channel.createInvite({ unique: true, temporary: false }).then(invite => {
   message.channel.send('https://discord.gg/'+invite.code);
@@ -201,6 +195,7 @@ else{
   if(message.content==p+'quote'){
     quotes.quote(message.channel)
   }
+
     if(message.content.startsWith(p+'pic')){
      if(!blacklist_words.includes(message.content.split(' ')[1])){
     GImgs.imgSearch(message.content.split(' ')[1],message.channel)
@@ -385,6 +380,61 @@ else{
       message.reply("You didn't mention the user to kick!");
     }
   }}
+
+if(message.content.startsWith(p+'mute')==true){
+    if(message.member.hasPermission("KICK_MEMBERS")){
+          if(message.channel.guild.id==='819691022333509672'){
+      let role = '822918216938422283'
+        const user = message.mentions.users.first();
+        if (user) {
+          const member = message.guild.member(user);
+          const roles= member._roles
+          if(!roles.some(x=>x===role)){
+        member.roles.add([role],'')
+        .then(x=>message.channel.send('Muted successfully'))
+        .catch(x=>console.log(x))
+      }
+      else{
+          member.roles.remove([role],'')
+        .then(x=>message.channel.send('Unmuted successfully'))
+        .catch(x=>console.log(x))
+      }
+    }
+  }
+    }
+    else if(message.channel.guild.id==='798636169532801074'){
+       let role = '829355301882560512'
+        const user = message.mentions.users.first();
+    if (user) {
+      console.log(user)
+      const member = message.guild.member(user);
+      const roles= member._roles
+      if(!roles.some(x=>x===role)){
+     member.roles.add([role],'')
+     .then(x=>message.channel.send('Muted successfully'))
+     .catch(x=>console.log(x))
+   }
+   else{
+      member.roles.remove([role],'')
+     .then(x=>message.channel.send('Unmuted successfully'))
+     .catch(x=>console.log(x))
+   }
+   
+    }
+   }
+   else{
+      message.channel.send('You have purely wasted my time , go do something productive [-][-]')
+    }
+}
+
+
+
+
+
+
+
+
+
 
 //Ban Command  
   if(message.content.startsWith(p+'ban')==true){
